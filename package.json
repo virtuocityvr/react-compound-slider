@@ -3,11 +3,9 @@
   "version": "3.0.0-beta.0",
   "license": "MIT",
   "author": "Steve Hall",
-  "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
-  "modules": "dist/rcs.esm.js",
+  "main": "src/index.ts",
   "files": [
-    "dist"
+      "src"
   ],
   "scripts": {
     "dev": "npm run clean && npm-run-all --parallel watch:*",
