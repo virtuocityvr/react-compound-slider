@@ -9,6 +9,11 @@ export interface SliderProps {
    */
   component?: keyof HTMLElementTagNameMap | keyof SVGElementTagNameMap;
   /**
+   * Document element used to attach the mouse/touch events to.
+   * Defaults to global document.
+   */
+  document?: Document;
+  /**
    * An object with any inline styles you want applied to the root element.
    */
   rootStyle?: React.CSSProperties;

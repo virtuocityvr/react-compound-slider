@@ -81,6 +81,7 @@ export class Slider<
     valueToPerc: null,
     valueToStep: null,
     pixelToStep: null,
+    document: document,
   };
 
   slider = React.createRef<T>();
@@ -198,11 +199,12 @@ export class Slider<
   }
 
   removeListeners() {
+    const doc = this.props.document || document;
     if (isBrowser) {
-      document.removeEventListener('mousemove', this.onMouseMove);
-      document.removeEventListener('mouseup', this.onMouseUp);
-      document.removeEventListener('touchmove', this.onTouchMove);
-      document.removeEventListener('touchend', this.onTouchEnd);
+      doc.removeEventListener('mousemove', this.onMouseMove);
+      doc.removeEventListener('mouseup', this.onMouseUp);
+      doc.removeEventListener('touchmove', this.onTouchMove);
+      doc.removeEventListener('touchend', this.onTouchEnd);
     }
   }
 
@@ -375,15 +377,17 @@ export class Slider<
 
   addMouseEvents() {
     if (isBrowser) {
-      document.addEventListener('mousemove', this.onMouseMove);
-      document.addEventListener('mouseup', this.onMouseUp);
+      const doc = this.props.document || document;
+      doc.addEventListener('mousemove', this.onMouseMove);
+      doc.addEventListener('mouseup', this.onMouseUp);
     }
   }
 
   addTouchEvents() {
     if (isBrowser) {
-      document.addEventListener('touchmove', this.onTouchMove);
-      document.addEventListener('touchend', this.onTouchEnd);
+      const doc = this.props.document || document;
+      doc.addEventListener('touchmove', this.onTouchMove);
+      doc.addEventListener('touchend', this.onTouchEnd);
     }
   }
 
@@ -504,8 +508,9 @@ export class Slider<
     this.setState({ activeHandleID: '' });
 
     if (isBrowser) {
-      document.removeEventListener('mousemove', this.onMouseMove);
-      document.removeEventListener('mouseup', this.onMouseUp);
+      const doc = this.props.document || document;
+      doc.removeEventListener('mousemove', this.onMouseMove);
+      doc.removeEventListener('mouseup', this.onMouseUp);
     }
   };
 
@@ -524,8 +529,9 @@ export class Slider<
     this.setState({ activeHandleID: '' });
 
     if (isBrowser) {
-      document.removeEventListener('touchmove', this.onTouchMove);
-      document.removeEventListener('touchend', this.onTouchEnd);
+      const doc = this.props.document || document;
+      doc.removeEventListener('touchmove', this.onTouchMove);
+      doc.removeEventListener('touchend', this.onTouchEnd);
     }
   };
 
